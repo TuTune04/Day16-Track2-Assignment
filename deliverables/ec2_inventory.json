@@ -1,0 +1,16 @@
+[
+    {
+        "InstanceId": "i-0fa6d0887bddc6156",
+        "InstanceType": "t3.micro",
+        "State": "running",
+        "PrivateIp": "10.0.0.47",
+        "LaunchTime": "2026-10-03T19:24:13+00:00"
+    },
+    {
+        "InstanceId": "i-0972d35d9659613cf",
+        "InstanceType": "t3.medium",
+        "State": "running",
+        "PrivateIp": "10.0.10.61",
+        "LaunchTime": "2026-10-03T19:24:08+00:00"
+    }
+]

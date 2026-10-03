@@ -1,0 +1,918 @@
+random_id.id: Refreshing state... [id=JEHsnQ]
+data.aws_ami.ubuntu: Reading...
+data.aws_availability_zones.available: Reading...
+data.aws_ami.deep_learning: Reading...
+aws_key_pair.lab_key: Refreshing state... [id=ai-lab-key-2441ec9d]
+aws_iam_role.ai_role: Refreshing state... [id=ai-inference-role-2441ec9d]
+aws_vpc.ai_vpc: Refreshing state... [id=vpc-0335d50dcbb1c4a6b]
+aws_eip.nat_eip: Refreshing state... [id=eipalloc-08191ae35a8ea0f48]
+data.aws_availability_zones.available: Read complete after 2s [id=us-east-1]
+data.aws_ami.ubuntu: Read complete after 2s [id=ami-062944a84867f2386]
+aws_iam_instance_profile.ai_profile: Refreshing state... [id=ai-inference-profile-2441ec9d]
+data.aws_ami.deep_learning: Read complete after 2s [id=ami-09ac991519c03e0e9]
+aws_internet_gateway.igw: Refreshing state... [id=igw-0131dade92a96d24b]
+aws_subnet.public[0]: Refreshing state... [id=subnet-0dc484f8d94214b6c]
+aws_subnet.private[0]: Refreshing state... [id=subnet-0b4f7f60e9852edc7]
+aws_subnet.public[1]: Refreshing state... [id=subnet-0161ca47e666ab333]
+aws_subnet.private[1]: Refreshing state... [id=subnet-0c3af2c8e5b95ec74]
+aws_security_group.alb_sg: Refreshing state... [id=sg-0bd0bd826d7a70be0]
+aws_security_group.bastion_sg: Refreshing state... [id=sg-005efea58c9f2fe1a]
+aws_lb_target_group.ai_tg: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:486940690343:targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797]
+aws_route_table.public_rt: Refreshing state... [id=rtb-01d7cd7da8b754225]
+aws_nat_gateway.nat: Refreshing state... [id=nat-04395bb54f0a2e7eb]
+aws_lb.ai_alb: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:486940690343:loadbalancer/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46]
+aws_route_table_association.public_assoc[1]: Refreshing state... [id=rtbassoc-02fe0f21ae66cc2bc]
+aws_route_table_association.public_assoc[0]: Refreshing state... [id=rtbassoc-09a4ba7d98be9ffac]
+aws_security_group.gpu_sg: Refreshing state... [id=sg-00ff3402f634b0ced]
+aws_instance.bastion: Refreshing state... [id=i-0fa6d0887bddc6156]
+aws_route_table.private_rt: Refreshing state... [id=rtb-082d938cef512060b]
+aws_instance.gpu_node: Refreshing state... [id=i-0972d35d9659613cf]
+aws_route_table_association.private_assoc[0]: Refreshing state... [id=rtbassoc-091de318beeeff708]
+aws_route_table_association.private_assoc[1]: Refreshing state... [id=rtbassoc-0b155cf1afe59f93e]
+aws_lb_listener.ai_listener: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:486940690343:listener/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46/af97249469784952]
+aws_lb_target_group_attachment.ai_tg_attach: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:486940690343:targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797-20261003192423637200000005]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_eip.nat_eip will be destroyed
+  - resource "aws_eip" "nat_eip" {
+      - allocation_id            = "eipalloc-08191ae35a8ea0f48" -> null
+      - arn                      = "arn:aws:ec2:us-east-1:486940690343:elastic-ip/eipalloc-08191ae35a8ea0f48" -> null
+      - association_id           = "eipassoc-0d8ea02a024e1bcf0" -> null
+      - domain                   = "vpc" -> null
+      - id                       = "eipalloc-08191ae35a8ea0f48" -> null
+      - network_border_group     = "us-east-1" -> null
+      - network_interface        = "eni-043bd6e4c4a167c45" -> null
+      - private_dns              = "ip-10-0-0-244.ec2.internal" -> null
+      - private_ip               = "10.0.0.244" -> null
+      - public_dns               = "ec2-98-82-249-101.compute-1.amazonaws.com" -> null
+      - public_ip                = "98.82.249.101" -> null
+      - public_ipv4_pool         = "amazon" -> null
+      - tags                     = {} -> null
+      - tags_all                 = {} -> null
+      - vpc                      = true -> null
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_iam_instance_profile.ai_profile will be destroyed
+  - resource "aws_iam_instance_profile" "ai_profile" {
+      - arn         = "arn:aws:iam::486940690343:instance-profile/ai-inference-profile-2441ec9d" -> null
+      - create_date = "2026-10-03T19:23:42Z" -> null
+      - id          = "ai-inference-profile-2441ec9d" -> null
+      - name        = "ai-inference-profile-2441ec9d" -> null
+      - path        = "/" -> null
+      - role        = "ai-inference-role-2441ec9d" -> null
+      - tags        = {} -> null
+      - tags_all    = {} -> null
+      - unique_id   = "AIPAXCX7NI6T6Z6ZPRBRH" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_iam_role.ai_role will be destroyed
+  - resource "aws_iam_role" "ai_role" {
+      - arn                   = "arn:aws:iam::486940690343:role/ai-inference-role-2441ec9d" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-10-03T19:23:41Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "ai-inference-role-2441ec9d" -> null
+      - managed_policy_arns   = [] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "ai-inference-role-2441ec9d" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {} -> null
+      - unique_id             = "AROAXCX7NI6TWRVRDZ6VJ" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_instance.bastion will be destroyed
+  - resource "aws_instance" "bastion" {
+      - ami                                  = "ami-062944a84867f2386" -> null
+      - arn                                  = "arn:aws:ec2:us-east-1:486940690343:instance/i-0fa6d0887bddc6156" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "us-east-1a" -> null
+      - cpu_core_count                       = 1 -> null
+      - cpu_threads_per_core                 = 2 -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - id                                   = "i-0fa6d0887bddc6156" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t3.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "ai-lab-key-2441ec9d" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-05ae1d92b97933f9d" -> null
+      - private_dns                          = "ip-10-0-0-47.ec2.internal" -> null
+      - private_ip                           = "10.0.0.47" -> null
+      - public_dns                           = "ec2-3-228-219-30.compute-1.amazonaws.com" -> null
+      - public_ip                            = "3.228.219.30" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0dc484f8d94214b6c" -> null
+      - tags                                 = {
+          - "Name" = "AI-Bastion-Host"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "AI-Bastion-Host"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-005efea58c9f2fe1a",
+        ] -> null
+        # (7 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count       = 1 -> null
+          - threads_per_core = 2 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 100 -> null
+          - tags                  = {} -> null
+          - tags_all              = {} -> null
+          - throughput            = 0 -> null
+          - volume_id             = "vol-0ff0a9bec00da3a34" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp2" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_instance.gpu_node will be destroyed
+  - resource "aws_instance" "gpu_node" {
+      - ami                                  = "ami-062944a84867f2386" -> null
+      - arn                                  = "arn:aws:ec2:us-east-1:486940690343:instance/i-0972d35d9659613cf" -> null
+      - associate_public_ip_address          = false -> null
+      - availability_zone                    = "us-east-1a" -> null
+      - cpu_core_count                       = 1 -> null
+      - cpu_threads_per_core                 = 2 -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - iam_instance_profile                 = "ai-inference-profile-2441ec9d" -> null
+      - id                                   = "i-0972d35d9659613cf" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t3.medium" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "ai-lab-key-2441ec9d" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-08d05f4efeebcf0c3" -> null
+      - private_dns                          = "ip-10-0-10-61.ec2.internal" -> null
+      - private_ip                           = "10.0.10.61" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0b4f7f60e9852edc7" -> null
+      - tags                                 = {
+          - "Name" = "AI-CPU-LightGBM-Node"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "AI-CPU-LightGBM-Node"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = (sensitive value) -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-00ff3402f634b0ced",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count       = 1 -> null
+          - threads_per_core = 2 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 3000 -> null
+          - tags                  = {} -> null
+          - tags_all              = {} -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-0437ad85a2cf40609" -> null
+          - volume_size           = 30 -> null
+          - volume_type           = "gp3" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_internet_gateway.igw will be destroyed
+  - resource "aws_internet_gateway" "igw" {
+      - arn      = "arn:aws:ec2:us-east-1:486940690343:internet-gateway/igw-0131dade92a96d24b" -> null
+      - id       = "igw-0131dade92a96d24b" -> null
+      - owner_id = "486940690343" -> null
+      - tags     = {
+          - "Name" = "AI-IGW"
+        } -> null
+      - tags_all = {
+          - "Name" = "AI-IGW"
+        } -> null
+      - vpc_id   = "vpc-0335d50dcbb1c4a6b" -> null
+    }
+
+  # aws_key_pair.lab_key will be destroyed
+  - resource "aws_key_pair" "lab_key" {
+      - arn             = "arn:aws:ec2:us-east-1:486940690343:key-pair/ai-lab-key-2441ec9d" -> null
+      - fingerprint     = "2b:95:7c:98:2e:28:df:09:7c:73:1d:72:e1:44:51:a0" -> null
+      - id              = "ai-lab-key-2441ec9d" -> null
+      - key_name        = "ai-lab-key-2441ec9d" -> null
+      - key_pair_id     = "key-0e73b51066d23d00d" -> null
+      - key_type        = "rsa" -> null
+      - public_key      = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCzcNswODbbfh0GATZXx48BC/zJMMY798RsKFuyQas4y0ps3UzypeJCdZsVTy48G4lHgzFqz7q8cWpefUJNxoOgIYsFWU+tj59Q4yIpwMjyPqrQ3tUyrDLaKVdu+/qgJCRGWk2ro6JFvs4OSYIxydOX/QTN44xBWlBx5Mtpou7mYKTCrCcQaZm8zSgaQz22OjqWTGSyYqw1er8GS39c3N9jvo4dvv8XtYb+QcRGICIrNJlLKNXMti1FIh4AtrWGeXf8N49BM870JxLlTQBZ6yEgkUqRcHDoeF76TaBsQTwbAAiKXC7GyMTZAYNwmnlRONEOUqH2+G89mJmtHOMQ+eqgY0tDVwbYVEjtd7Va7qhWhtB9RQ48WDoL4i2B9shinZ/2EPktKco9qvrjv3KDSVLNpmF2FPs/VHnGbgoYnjAJA6d22DFd8UrMovTTobRmpulJp16fLIz18t0EVQJnClj4OJUOiRUA158oS5njSwAbC8W76JTLMoAgo+3zo14zuWe03jx7bZWOtgaKKMsXo4dH14i78adja4hbsWxqQpAf8+P0JTpSGhfOeBNV7Aeo4ZI2A1/eKOP262Q9IB8kaC78hTXRkV4+UVjqjbc79CUxwv/b6S7OMMRzNY+lkxvXY/6v6Mz6XuhBw+MV4U+C2pOM0g9EfRZoase6S4dwW6b+oQ== tutusk4@tutusk4-IdeaPad-5-15ITL05" -> null
+      - tags            = {} -> null
+      - tags_all        = {} -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_lb.ai_alb will be destroyed
+  - resource "aws_lb" "ai_alb" {
+      - arn                                                          = "arn:aws:elasticloadbalancing:us-east-1:486940690343:loadbalancer/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46" -> null
+      - arn_suffix                                                   = "app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46" -> null
+      - client_keep_alive                                            = 3600 -> null
+      - desync_mitigation_mode                                       = "defensive" -> null
+      - dns_name                                                     = "ai-inference-alb-2441ec9d-1978146916.us-east-1.elb.amazonaws.com" -> null
+      - drop_invalid_header_fields                                   = false -> null
+      - enable_cross_zone_load_balancing                             = true -> null
+      - enable_deletion_protection                                   = false -> null
+      - enable_http2                                                 = true -> null
+      - enable_tls_version_and_cipher_suite_headers                  = false -> null
+      - enable_waf_fail_open                                         = false -> null
+      - enable_xff_client_port                                       = false -> null
+      - enable_zonal_shift                                           = false -> null
+      - id                                                           = "arn:aws:elasticloadbalancing:us-east-1:486940690343:loadbalancer/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46" -> null
+      - idle_timeout                                                 = 60 -> null
+      - internal                                                     = false -> null
+      - ip_address_type                                              = "ipv4" -> null
+      - load_balancer_type                                           = "application" -> null
+      - name                                                         = "ai-inference-alb-2441ec9d" -> null
+      - preserve_host_header                                         = false -> null
+      - security_groups                                              = [
+          - "sg-0bd0bd826d7a70be0",
+        ] -> null
+      - subnets                                                      = [
+          - "subnet-0161ca47e666ab333",
+          - "subnet-0dc484f8d94214b6c",
+        ] -> null
+      - tags                                                         = {} -> null
+      - tags_all                                                     = {} -> null
+      - vpc_id                                                       = "vpc-0335d50dcbb1c4a6b" -> null
+      - xff_header_processing_mode                                   = "append" -> null
+      - zone_id                                                      = "Z35SXDOTRQ7X7K" -> null
+        # (3 unchanged attributes hidden)
+
+      - access_logs {
+          - enabled = false -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - connection_logs {
+          - enabled = false -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - subnet_mapping {
+          - subnet_id            = "subnet-0161ca47e666ab333" -> null
+            # (4 unchanged attributes hidden)
+        }
+      - subnet_mapping {
+          - subnet_id            = "subnet-0dc484f8d94214b6c" -> null
+            # (4 unchanged attributes hidden)
+        }
+    }
+
+  # aws_lb_listener.ai_listener will be destroyed
+  - resource "aws_lb_listener" "ai_listener" {
+      - arn                                                                 = "arn:aws:elasticloadbalancing:us-east-1:486940690343:listener/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46/af97249469784952" -> null
+      - id                                                                  = "arn:aws:elasticloadbalancing:us-east-1:486940690343:listener/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46/af97249469784952" -> null
+      - load_balancer_arn                                                   = "arn:aws:elasticloadbalancing:us-east-1:486940690343:loadbalancer/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46" -> null
+      - port                                                                = 80 -> null
+      - protocol                                                            = "HTTP" -> null
+      - routing_http_response_server_enabled                                = true -> null
+      - tags                                                                = {} -> null
+      - tags_all                                                            = {} -> null
+        # (11 unchanged attributes hidden)
+
+      - default_action {
+          - order            = 1 -> null
+          - target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:486940690343:targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797" -> null
+          - type             = "forward" -> null
+        }
+    }
+
+  # aws_lb_target_group.ai_tg will be destroyed
+  - resource "aws_lb_target_group" "ai_tg" {
+      - arn                                = "arn:aws:elasticloadbalancing:us-east-1:486940690343:targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797" -> null
+      - arn_suffix                         = "targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797" -> null
+      - deregistration_delay               = "300" -> null
+      - id                                 = "arn:aws:elasticloadbalancing:us-east-1:486940690343:targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797" -> null
+      - ip_address_type                    = "ipv4" -> null
+      - lambda_multi_value_headers_enabled = false -> null
+      - load_balancer_arns                 = [
+          - "arn:aws:elasticloadbalancing:us-east-1:486940690343:loadbalancer/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46",
+        ] -> null
+      - load_balancing_algorithm_type      = "round_robin" -> null
+      - load_balancing_anomaly_mitigation  = "off" -> null
+      - load_balancing_cross_zone_enabled  = "use_load_balancer_configuration" -> null
+      - name                               = "ai-inference-tg-2441ec9d" -> null
+      - port                               = 8000 -> null
+      - protocol                           = "HTTP" -> null
+      - protocol_version                   = "HTTP1" -> null
+      - proxy_protocol_v2                  = false -> null
+      - slow_start                         = 0 -> null
+      - tags                               = {} -> null
+      - tags_all                           = {} -> null
+      - target_type                        = "instance" -> null
+      - vpc_id                             = "vpc-0335d50dcbb1c4a6b" -> null
+        # (1 unchanged attribute hidden)
+
+      - health_check {
+          - enabled             = true -> null
+          - healthy_threshold   = 2 -> null
+          - interval            = 30 -> null
+          - matcher             = "200" -> null
+          - path                = "/health" -> null
+          - port                = "traffic-port" -> null
+          - protocol            = "HTTP" -> null
+          - timeout             = 5 -> null
+          - unhealthy_threshold = 2 -> null
+        }
+
+      - stickiness {
+          - cookie_duration = 86400 -> null
+          - enabled         = false -> null
+          - type            = "lb_cookie" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - target_failover {}
+
+      - target_group_health {
+          - dns_failover {
+              - minimum_healthy_targets_count      = "1" -> null
+              - minimum_healthy_targets_percentage = "off" -> null
+            }
+          - unhealthy_state_routing {
+              - minimum_healthy_targets_count      = 1 -> null
+              - minimum_healthy_targets_percentage = "off" -> null
+            }
+        }
+
+      - target_health_state {}
+    }
+
+  # aws_lb_target_group_attachment.ai_tg_attach will be destroyed
+  - resource "aws_lb_target_group_attachment" "ai_tg_attach" {
+      - id               = "arn:aws:elasticloadbalancing:us-east-1:486940690343:targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797-20261003192423637200000005" -> null
+      - port             = 8000 -> null
+      - target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:486940690343:targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797" -> null
+      - target_id        = "i-0972d35d9659613cf" -> null
+    }
+
+  # aws_nat_gateway.nat will be destroyed
+  - resource "aws_nat_gateway" "nat" {
+      - allocation_id                      = "eipalloc-08191ae35a8ea0f48" -> null
+      - association_id                     = "eipassoc-0d8ea02a024e1bcf0" -> null
+      - connectivity_type                  = "public" -> null
+      - id                                 = "nat-04395bb54f0a2e7eb" -> null
+      - network_interface_id               = "eni-043bd6e4c4a167c45" -> null
+      - private_ip                         = "10.0.0.244" -> null
+      - public_ip                          = "98.82.249.101" -> null
+      - secondary_allocation_ids           = [] -> null
+      - secondary_private_ip_address_count = 0 -> null
+      - secondary_private_ip_addresses     = [] -> null
+      - subnet_id                          = "subnet-0dc484f8d94214b6c" -> null
+      - tags                               = {
+          - "Name" = "AI-NAT"
+        } -> null
+      - tags_all                           = {
+          - "Name" = "AI-NAT"
+        } -> null
+    }
+
+  # aws_route_table.private_rt will be destroyed
+  - resource "aws_route_table" "private_rt" {
+      - arn              = "arn:aws:ec2:us-east-1:486940690343:route-table/rtb-082d938cef512060b" -> null
+      - id               = "rtb-082d938cef512060b" -> null
+      - owner_id         = "486940690343" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - nat_gateway_id             = "nat-04395bb54f0a2e7eb"
+                # (11 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {} -> null
+      - tags_all         = {} -> null
+      - vpc_id           = "vpc-0335d50dcbb1c4a6b" -> null
+    }
+
+  # aws_route_table.public_rt will be destroyed
+  - resource "aws_route_table" "public_rt" {
+      - arn              = "arn:aws:ec2:us-east-1:486940690343:route-table/rtb-01d7cd7da8b754225" -> null
+      - id               = "rtb-01d7cd7da8b754225" -> null
+      - owner_id         = "486940690343" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-0131dade92a96d24b"
+                # (11 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {} -> null
+      - tags_all         = {} -> null
+      - vpc_id           = "vpc-0335d50dcbb1c4a6b" -> null
+    }
+
+  # aws_route_table_association.private_assoc[0] will be destroyed
+  - resource "aws_route_table_association" "private_assoc" {
+      - id             = "rtbassoc-091de318beeeff708" -> null
+      - route_table_id = "rtb-082d938cef512060b" -> null
+      - subnet_id      = "subnet-0b4f7f60e9852edc7" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.private_assoc[1] will be destroyed
+  - resource "aws_route_table_association" "private_assoc" {
+      - id             = "rtbassoc-0b155cf1afe59f93e" -> null
+      - route_table_id = "rtb-082d938cef512060b" -> null
+      - subnet_id      = "subnet-0c3af2c8e5b95ec74" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.public_assoc[0] will be destroyed
+  - resource "aws_route_table_association" "public_assoc" {
+      - id             = "rtbassoc-09a4ba7d98be9ffac" -> null
+      - route_table_id = "rtb-01d7cd7da8b754225" -> null
+      - subnet_id      = "subnet-0dc484f8d94214b6c" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_route_table_association.public_assoc[1] will be destroyed
+  - resource "aws_route_table_association" "public_assoc" {
+      - id             = "rtbassoc-02fe0f21ae66cc2bc" -> null
+      - route_table_id = "rtb-01d7cd7da8b754225" -> null
+      - subnet_id      = "subnet-0161ca47e666ab333" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.alb_sg will be destroyed
+  - resource "aws_security_group" "alb_sg" {
+      - arn                    = "arn:aws:ec2:us-east-1:486940690343:security-group/sg-0bd0bd826d7a70be0" -> null
+      - description            = "Allow HTTP inbound to ALB" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - id                     = "sg-0bd0bd826d7a70be0" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - from_port        = 80
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 80
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - name                   = "ai-alb-sg" -> null
+      - owner_id               = "486940690343" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - tags_all               = {} -> null
+      - vpc_id                 = "vpc-0335d50dcbb1c4a6b" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.bastion_sg will be destroyed
+  - resource "aws_security_group" "bastion_sg" {
+      - arn                    = "arn:aws:ec2:us-east-1:486940690343:security-group/sg-005efea58c9f2fe1a" -> null
+      - description            = "Allow SSH inbound to Bastion" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - id                     = "sg-005efea58c9f2fe1a" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - name                   = "ai-bastion-sg" -> null
+      - owner_id               = "486940690343" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - tags_all               = {} -> null
+      - vpc_id                 = "vpc-0335d50dcbb1c4a6b" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_security_group.gpu_sg will be destroyed
+  - resource "aws_security_group" "gpu_sg" {
+      - arn                    = "arn:aws:ec2:us-east-1:486940690343:security-group/sg-00ff3402f634b0ced" -> null
+      - description            = "Allow SSH from Bastion and HTTP from ALB" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - id                     = "sg-00ff3402f634b0ced" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = []
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = [
+                  - "sg-005efea58c9f2fe1a",
+                ]
+              - self             = false
+              - to_port          = 22
+                # (1 unchanged attribute hidden)
+            },
+          - {
+              - cidr_blocks      = []
+              - from_port        = 8000
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = [
+                  - "sg-0bd0bd826d7a70be0",
+                ]
+              - self             = false
+              - to_port          = 8000
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - name                   = "ai-gpu-node-sg" -> null
+      - owner_id               = "486940690343" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - tags_all               = {} -> null
+      - vpc_id                 = "vpc-0335d50dcbb1c4a6b" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_subnet.private[0] will be destroyed
+  - resource "aws_subnet" "private" {
+      - arn                                            = "arn:aws:ec2:us-east-1:486940690343:subnet/subnet-0b4f7f60e9852edc7" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1a" -> null
+      - availability_zone_id                           = "use1-az1" -> null
+      - cidr_block                                     = "10.0.10.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0b4f7f60e9852edc7" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "486940690343" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "Private-Subnet-0"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "Private-Subnet-0"
+        } -> null
+      - vpc_id                                         = "vpc-0335d50dcbb1c4a6b" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_subnet.private[1] will be destroyed
+  - resource "aws_subnet" "private" {
+      - arn                                            = "arn:aws:ec2:us-east-1:486940690343:subnet/subnet-0c3af2c8e5b95ec74" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1b" -> null
+      - availability_zone_id                           = "use1-az2" -> null
+      - cidr_block                                     = "10.0.11.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0c3af2c8e5b95ec74" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "486940690343" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "Private-Subnet-1"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "Private-Subnet-1"
+        } -> null
+      - vpc_id                                         = "vpc-0335d50dcbb1c4a6b" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_subnet.public[0] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:us-east-1:486940690343:subnet/subnet-0dc484f8d94214b6c" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1a" -> null
+      - availability_zone_id                           = "use1-az1" -> null
+      - cidr_block                                     = "10.0.0.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0dc484f8d94214b6c" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "486940690343" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "Public-Subnet-0"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "Public-Subnet-0"
+        } -> null
+      - vpc_id                                         = "vpc-0335d50dcbb1c4a6b" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_subnet.public[1] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:us-east-1:486940690343:subnet/subnet-0161ca47e666ab333" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1b" -> null
+      - availability_zone_id                           = "use1-az2" -> null
+      - cidr_block                                     = "10.0.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0161ca47e666ab333" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "486940690343" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "Public-Subnet-1"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "Public-Subnet-1"
+        } -> null
+      - vpc_id                                         = "vpc-0335d50dcbb1c4a6b" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # aws_vpc.ai_vpc will be destroyed
+  - resource "aws_vpc" "ai_vpc" {
+      - arn                                  = "arn:aws:ec2:us-east-1:486940690343:vpc/vpc-0335d50dcbb1c4a6b" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.0.0.0/16" -> null
+      - default_network_acl_id               = "acl-06c63bf69228ae042" -> null
+      - default_route_table_id               = "rtb-061cc38ebb5b8a092" -> null
+      - default_security_group_id            = "sg-0896c47ab8990d443" -> null
+      - dhcp_options_id                      = "dopt-061742b73ed1e0c67" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-0335d50dcbb1c4a6b" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-061cc38ebb5b8a092" -> null
+      - owner_id                             = "486940690343" -> null
+      - tags                                 = {
+          - "Name" = "AI-VPC"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "AI-VPC"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # random_id.id will be destroyed
+  - resource "random_id" "id" {
+      - b64_std     = "JEHsnQ==" -> null
+      - b64_url     = "JEHsnQ" -> null
+      - byte_length = 4 -> null
+      - dec         = "608300189" -> null
+      - hex         = "2441ec9d" -> null
+      - id          = "JEHsnQ" -> null
+    }
+
+Plan: 0 to add, 0 to change, 27 to destroy.
+
+Changes to Outputs:
+  - alb_dns_name      = "ai-inference-alb-2441ec9d-1978146916.us-east-1.elb.amazonaws.com" -> null
+  - bastion_public_ip = "3.228.219.30" -> null
+  - endpoint_url      = "http://ai-inference-alb-2441ec9d-1978146916.us-east-1.elb.amazonaws.com/v1/completions" -> null
+  - gpu_private_ip    = "10.0.10.61" -> null
+aws_route_table_association.public_assoc[0]: Destroying... [id=rtbassoc-09a4ba7d98be9ffac]
+aws_route_table_association.private_assoc[0]: Destroying... [id=rtbassoc-091de318beeeff708]
+aws_route_table_association.public_assoc[1]: Destroying... [id=rtbassoc-02fe0f21ae66cc2bc]
+aws_route_table_association.private_assoc[1]: Destroying... [id=rtbassoc-0b155cf1afe59f93e]
+aws_lb_target_group_attachment.ai_tg_attach: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:486940690343:targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797-20261003192423637200000005]
+aws_lb_listener.ai_listener: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:486940690343:listener/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46/af97249469784952]
+aws_instance.bastion: Destroying... [id=i-0fa6d0887bddc6156]
+aws_lb_listener.ai_listener: Destruction complete after 1s
+aws_lb.ai_alb: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:486940690343:loadbalancer/app/ai-inference-alb-2441ec9d/5f8e5ebe779cbb46]
+aws_lb_target_group_attachment.ai_tg_attach: Destruction complete after 1s
+aws_lb_target_group.ai_tg: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:486940690343:targetgroup/ai-inference-tg-2441ec9d/03f1d45216e87797]
+aws_instance.gpu_node: Destroying... [id=i-0972d35d9659613cf]
+aws_route_table_association.private_assoc[1]: Destruction complete after 1s
+aws_route_table_association.private_assoc[0]: Destruction complete after 1s
+aws_route_table_association.public_assoc[1]: Destruction complete after 1s
+aws_route_table.private_rt: Destroying... [id=rtb-082d938cef512060b]
+aws_lb_target_group.ai_tg: Destruction complete after 0s
+aws_route_table_association.public_assoc[0]: Destruction complete after 2s
+aws_route_table.public_rt: Destroying... [id=rtb-01d7cd7da8b754225]
+aws_route_table.private_rt: Destruction complete after 2s
+aws_nat_gateway.nat: Destroying... [id=nat-04395bb54f0a2e7eb]
+aws_route_table.public_rt: Destruction complete after 1s
+aws_instance.bastion: Still destroying... [id=i-0fa6d0887bddc6156, 00m10s elapsed]
+aws_lb.ai_alb: Still destroying... [id=arn:aws:elasticloadbalancing:us-east-1:...nference-alb-2441ec9d/5f8e5ebe779cbb46, 00m10s elapsed]
+aws_instance.gpu_node: Still destroying... [id=i-0972d35d9659613cf, 00m10s elapsed]
+aws_nat_gateway.nat: Still destroying... [id=nat-04395bb54f0a2e7eb, 00m10s elapsed]
+aws_lb.ai_alb: Destruction complete after 18s
+aws_instance.bastion: Still destroying... [id=i-0fa6d0887bddc6156, 00m20s elapsed]
+aws_instance.gpu_node: Still destroying... [id=i-0972d35d9659613cf, 00m20s elapsed]
+aws_nat_gateway.nat: Still destroying... [id=nat-04395bb54f0a2e7eb, 00m20s elapsed]
+aws_instance.bastion: Still destroying... [id=i-0fa6d0887bddc6156, 00m30s elapsed]
+aws_instance.gpu_node: Still destroying... [id=i-0972d35d9659613cf, 00m30s elapsed]
+aws_instance.bastion: Destruction complete after 32s
+aws_instance.gpu_node: Destruction complete after 32s
+aws_key_pair.lab_key: Destroying... [id=ai-lab-key-2441ec9d]
+aws_iam_instance_profile.ai_profile: Destroying... [id=ai-inference-profile-2441ec9d]
+aws_subnet.private[0]: Destroying... [id=subnet-0b4f7f60e9852edc7]
+aws_subnet.private[1]: Destroying... [id=subnet-0c3af2c8e5b95ec74]
+aws_security_group.gpu_sg: Destroying... [id=sg-00ff3402f634b0ced]
+aws_nat_gateway.nat: Still destroying... [id=nat-04395bb54f0a2e7eb, 00m30s elapsed]
+aws_key_pair.lab_key: Destruction complete after 0s
+aws_subnet.private[0]: Destruction complete after 1s
+aws_subnet.private[1]: Destruction complete after 1s
+aws_security_group.gpu_sg: Destruction complete after 1s
+aws_security_group.alb_sg: Destroying... [id=sg-0bd0bd826d7a70be0]
+aws_security_group.bastion_sg: Destroying... [id=sg-005efea58c9f2fe1a]
+aws_iam_instance_profile.ai_profile: Destruction complete after 1s
+aws_iam_role.ai_role: Destroying... [id=ai-inference-role-2441ec9d]
+aws_iam_role.ai_role: Destruction complete after 1s
+random_id.id: Destroying... [id=JEHsnQ]
+random_id.id: Destruction complete after 0s
+aws_security_group.alb_sg: Destruction complete after 1s
+aws_security_group.bastion_sg: Destruction complete after 1s
+aws_nat_gateway.nat: Still destroying... [id=nat-04395bb54f0a2e7eb, 00m40s elapsed]
+aws_nat_gateway.nat: Destruction complete after 42s
+aws_internet_gateway.igw: Destroying... [id=igw-0131dade92a96d24b]
+aws_subnet.public[0]: Destroying... [id=subnet-0dc484f8d94214b6c]
+aws_eip.nat_eip: Destroying... [id=eipalloc-08191ae35a8ea0f48]
+aws_subnet.public[1]: Destroying... [id=subnet-0161ca47e666ab333]
+aws_internet_gateway.igw: Destruction complete after 1s
+aws_subnet.public[1]: Destruction complete after 1s
+aws_subnet.public[0]: Destruction complete after 1s
+aws_vpc.ai_vpc: Destroying... [id=vpc-0335d50dcbb1c4a6b]
+aws_eip.nat_eip: Destruction complete after 1s
+aws_vpc.ai_vpc: Destruction complete after 1s
+
+Destroy complete! Resources: 27 destroyed.

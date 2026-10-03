@@ -1,0 +1,17 @@
+[
+    {
+        "Id": "i-0fa6d0887bddc6156",
+        "State": "terminated"
+    },
+    {
+        "Id": "i-0972d35d9659613cf",
+        "State": "terminated"
+    }
+]
+[
+    {
+        "Id": "nat-04395bb54f0a2e7eb",
+        "State": "deleted"
+    }
+]
+[]
